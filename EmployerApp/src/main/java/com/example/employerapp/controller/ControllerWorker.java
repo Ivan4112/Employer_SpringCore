@@ -57,12 +57,12 @@ public class ControllerWorker {
 
     @PostMapping("/workers/search_worker")
     public String findWorker(String lastName, Model model) {
-        Optional<Worker> worker = workerRepository.findByLastName(lastName);
+        List<Worker> worker = workerRepository.findByLastName(lastName);
         if(worker.isEmpty()){
             model.addAttribute("message",  "worker with last name " + lastName + " doesn't exist");
             return "error_worker";
         }else {
-            model.addAttribute("srcWrk",worker.get());
+            model.addAttribute("srcWrk",worker);
         }
         return "search_worker";
     }

@@ -35,14 +35,14 @@
             </thead>
 
             <tbody style="border: 4px #18c4e3">
-                <tr>
-                    <td th:text="${srcEmp.lastName}"></td>
-                    <td th:text="${srcEmp.firstName}"></td>
-                    <td th:text="${srcEmp.patronimic}"></td>
-                    <td th:text="${srcEmp.phoneNumber}"></td>
-                    <td th:text="${srcEmp.adressCompany}"></td>
-                    <td><a th:href="@{/delete_employer/{id}(id=${srcEmp.id})}">Delete</a></td>
-                    <td><a th:href="@{/employers/my_workers/{id}(id=${srcEmp.id})}">My workers</a></td>
+                <tr th:each="em : ${srcEmp}">
+                    <td th:text="${em.lastName}"></td>
+                    <td th:text="${em.firstName}"></td>
+                    <td th:text="${em.patronimic}"></td>
+                    <td th:text="${em.phoneNumber}"></td>
+                    <td th:text="${em.adressCompany}"></td>
+                    <td><a th:href="@{/delete_employer/{id}(id=${em.id})}">Delete</a></td>
+                    <td><a th:href="@{/employers/my_workers/{id}(id=${em.id})}">My workers</a></td>
                 </tr>
             </tbody>
         </table>

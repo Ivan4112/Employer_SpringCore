@@ -34,13 +34,13 @@
             </thead>
 
             <tbody style="border: 4px #18c4e3">
-                <tr>
-                    <td th:text="${srcWrk.lastName}"></td>
-                    <td th:text="${srcWrk.firstName}"></td>
-                    <td th:text="${srcWrk.patronimic}"></td>
-                    <td th:text="${srcWrk.salary}"></td>
-                    <td th:text="${srcWrk.totalEarn}"></td>
-                    <td th:text="${srcWrk.employer.lastName}"></td>
+                <tr th:each="wr : ${srcWrk}">
+                    <td th:text="${wr.lastName}"></td>
+                    <td th:text="${wr.firstName}"></td>
+                    <td th:text="${wr.patronimic}"></td>
+                    <td th:text="${wr.salary}"></td>
+                    <td th:text="${wr.totalEarn}"></td>
+                    <td th:text="${wr.employer.getLastName()}"></td>
                 </tr>
             </tbody>
         </table>

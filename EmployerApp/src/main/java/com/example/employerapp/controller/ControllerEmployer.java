@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,12 +71,13 @@ public class ControllerEmployer {
 
     @PostMapping("/employers/search_employers")
     public String findEmployer(String lastName, Model model) {
-        Optional<Employer> employer = employerRepository.findByLastName(lastName);
+        List<Employer> employer = employerRepository.findByLastName(lastName);
+
         if(employer.isEmpty()){
             model.addAttribute("message_search",  "employer with last name " + lastName + " doesn't exist");
             return "error_emp";
         }else {
-            model.addAttribute("srcEmp",employer.get());
+            model.addAttribute("srcEmp",employer);
             return "search_employers";
         }
 
